@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>Grill Shorts ／ 企画提案書</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #15171c;
+    --ink-2:     #353a42;
+    --ink-3:     #616770;
+    --ink-4:     #9aa0a8;
+    --rule:      #dcdee2;
+    --rule-soft: #ecedef;
+    --panel:     #f5f4f0;
+    --panel-2:   #eceae2;
+    --accent:    #1b2a4a;
+    --accent-2:  #2f4679;
+    --good:      #2f6b46;
+    --bg:        #f7f6f2;
+    --paper:     #ffffff;
+    --c1: #fdfaf4;
+    --c2: #f4fdf8;
+    --c3: #fdf4f4;
+    --ai: #e8f4fd;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  body { font-family: "Noto Sans JP", sans-serif; font-size: 15px; line-height: 1.75; padding: 56px 24px 120px; counter-reset: sec; }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+
+  .doc { max-width: 960px; margin: 0 auto; background: var(--paper); padding: 72px 88px 96px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 20px 60px rgba(0,0,0,.08); border-radius: 2px; }
+
+  /* Header */
+  .meta { display: grid; grid-template-columns: 1fr auto; align-items: flex-end; gap: 24px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); margin-bottom: 48px; }
+  .meta .brand { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 10px; }
+  .meta h1 { font-size: 34px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+  .meta .sub { font-size: 16px; color: var(--ink-2); margin-top: 10px; }
+  .meta-grid { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-3); letter-spacing: 0.06em; line-height: 1.9; text-align: right; min-width: 200px; }
+  .meta-grid b { color: var(--ink); font-weight: 500; }
+
+  /* TOC */
+  .toc { background: var(--panel); padding: 24px 28px; margin: 0 0 56px; border-left: 3px solid var(--accent); }
+  .toc h6 { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
+  .toc ol { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 36px; counter-reset: toc-counter; }
+  .toc li { display: flex; gap: 12px; padding: 5px 0; font-size: 14px; color: var(--ink-2); break-inside: avoid; }
+  .toc li::before { content: counter(toc-counter, decimal-leading-zero); counter-increment: toc-counter; font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; color: var(--ink-4); min-width: 28px; }
+  .toc a { color: inherit; text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* Sections */
+  section { margin-bottom: 64px; scroll-margin-top: 20px; }
+  h2 { font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 10px; padding-top: 8px; border-top: 1px solid var(--rule); }
+  h2::before { content: "§ " counter(sec, decimal-leading-zero) "　"; counter-increment: sec; font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; color: var(--accent); }
+  h2 + .section-sub { font-size: 14px; color: var(--ink-3); margin: 0 0 28px; }
+  p { margin: 0 0 14px; color: var(--ink-2); }
+  ul { margin: 8px 0 14px; padding-left: 22px; color: var(--ink-2); }
+  ul li { margin: 4px 0; }
+  ul li::marker { color: var(--accent); }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--accent); font-style: normal; font-weight: 500; }
+
+  /* Episode card */
+  .ep { border: 1px solid var(--rule); border-radius: 2px; margin: 0 0 20px; overflow: hidden; }
+  .ep-head { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid var(--rule-soft); }
+  .ep-no { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-4); min-width: 44px; }
+  .ep-title { font-size: 16px; font-weight: 700; color: var(--ink); flex: 1; }
+  .ep-tag { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
+  .tag-ai { background: var(--ai); color: #1a6091; }
+  .tag-target { background: var(--panel); color: var(--ink-3); }
+  .ep-body { padding: 16px 20px; display: grid; grid-template-columns: 110px 1fr; gap: 10px 16px; font-size: 13.5px; }
+  .ep-body dt { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+  .ep-body dd { margin: 0; color: var(--ink-2); line-height: 1.65; }
+  .ep-body dd strong { color: var(--ink); }
+
+  .ep.s1 { border-left: 3px solid #c9a84c; }
+  .ep.s1 .ep-head { background: var(--c1); }
+  .ep.s2 { border-left: 3px solid #50b3a0; }
+  .ep.s2 .ep-head { background: var(--c2); }
+  .ep.s3 { border-left: 3px solid #c97a7a; }
+  .ep.s3 .ep-head { background: var(--c3); }
+
+  /* Note */
+  .note { padding: 14px 18px; background: var(--panel); border-left: 3px solid var(--ink-3); font-size: 13.5px; color: var(--ink-2); margin: 16px 0 28px; }
+  .note.accent { border-left-color: var(--accent); }
+  .note .lbl { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+
+  /* Footer */
+  .foot { margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; display: flex; justify-content: space-between; }
+
+  @media (max-width: 820px) {
+    body { padding: 24px 0 80px; }
+    .doc { padding: 40px 24px 64px; border-radius: 0; }
+    .toc ol { columns: 1; }
+    .meta { grid-template-columns: 1fr; }
+    .meta-grid { text-align: left; }
+    .ep-body { grid-template-columns: 1fr; }
+    .ep-body dt { padding-top: 10px; }
+  }
+</style>
+</head>
+<body>
+<article class="doc">
+
+  <header class="meta">
+    <div>
+      <div class="brand">Grill Shorts ／ Content Planning</div>
+      <h1>企画提案書</h1>
+      <div class="sub">岩館さん×ショート動画 ／ 第1回企画16本ラインナップ</div>
+    </div>
+    <div class="meta-grid">
+      DOC &nbsp;· <b>GS-PLAN-2026-01</b><br/>
+      DATE &nbsp;· <b>2026.04.24</b><br/>
+      STATUS &nbsp;· <b style="color:var(--accent)">REVIEW</b><br/>
+      OWNER &nbsp;· <b>マーケティングチーム</b>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h6>Contents</h6>
+    <ol>
+      <li><a href="#s1">企画の方針</a></li>
+      <li><a href="#s2">① 社長突撃系（5本）</a></li>
+      <li><a href="#s3">② 時事ニュース解説（5本）</a></li>
+      <li><a href="#s4">③ 経営あるある（6本）</a></li>
+      <li><a href="#s5">優先度・撮影順の目安</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── 1 方針 ── -->
+  <section id="s1">
+    <h2>企画の方針</h2>
+    <p class="section-sub">今回の企画16本における共通の設計思想</p>
+
+    <div class="note accent">
+      <span class="lbl">Design Principle</span>
+      <strong>「岩館さんから引き出す」構成を基本とする。</strong>岩館さんが既にYouTubeや日常で語っている内容を、ショート向けに「問い」の形で引き出す設計。台本ではなく会話の流れで撮れるものを優先。
+    </div>
+
+    <ul>
+      <li><strong>フックは必ず疑問形</strong>で岩館さんへの「質問」として設計 → カメラに向かって話すより自然な絵が撮れる</li>
+      <li><strong>AIネタを4本</strong>組み込み。岩館さんが話したがっているテーマを早めに消化する</li>
+      <li><strong>数字・実例・本音</strong>が入るとバズりやすい。「〇〇な院長」「〇〇フレーズ」などの具体性を意識</li>
+      <li>まず<strong>岩館さんにこの一覧を見せてOK/NG/修正</strong>をもらい、採用企画から台本作成へ進む</li>
+    </ul>
+  </section>
+
+  <!-- ── 2 社長突撃 ── -->
+  <section id="s2">
+    <h2>① 社長突撃系（5本）</h2>
+    <p class="section-sub">岩館さんの1日・判断・本音にカメラが密着。経営者の頭の中を覗く番組型。</p>
+
+    <div class="ep s1">
+      <div class="ep-head">
+        <span class="ep-no">01-01</span>
+        <span class="ep-title">岩館さんが毎朝チェックする3つの数字</span>
+        <span class="ep-tag tag-target">A / B / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「社長、朝一番に何を見てるんですか？」</dd>
+        <dt>内容</dt><dd>売上・予約数・キャンセル率など経営者が毎朝チェックするKPIを自然な会話で引き出す。<strong>「この数字が動いたら即アクション」</strong>まで話してもらうと実用性が出る。</dd>
+        <dt>撮れ高</dt><dd>スマホ画面を映しながら話せると映えやすい。スプレッドシートやダッシュボードが映ると説得力UP。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s1">
+      <div class="ep-head">
+        <span class="ep-no">01-02</span>
+        <span class="ep-title">クリニックコンサルを断った瞬間の話</span>
+        <span class="ep-tag tag-target">A / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「今まで断った案件って、どんな時ですか？」</dd>
+        <dt>内容</dt><dd>受けない案件の共通点を本音で語ってもらう。<strong>「経営者の姿勢」「数字の見方」</strong>など。視聴者が「自分はどっちか」と自己診断できる構成にする。</dd>
+        <dt>撮れ高</dt><dd>「断った理由TOP3」形式にするとテロップが作りやすく、切り抜きにも使える。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s1">
+      <div class="ep-head">
+        <span class="ep-no">01-03</span>
+        <span class="ep-title">岩館さんが院長に最初に聞く質問</span>
+        <span class="ep-tag tag-target">A / B</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「初回面談で必ず聞くことって何ですか？」</dd>
+        <dt>内容</dt><dd><strong>「集患の悩みより先に聞くこと」「この質問で経営の深さがわかる」</strong>という切り口。コンサル目線のフレームワークを自然に伝える。</dd>
+        <dt>撮れ高</dt><dd>質問を「3つ」に絞ると構成しやすい。「なぜそれを聞くのか」の理由まで話してもらうと深みが出る。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s1" style="border-left-color:#1a6091">
+      <div class="ep-head" style="background:var(--ai)">
+        <span class="ep-no">01-04</span>
+        <span class="ep-title">AIを使い始めて、業務で一番変わったこと</span>
+        <span class="ep-tag tag-ai">✦ AI</span>
+        <span class="ep-tag tag-target">A / B / D</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「岩館さん、最近AIどう使ってますか？」</dd>
+        <dt>内容</dt><dd>Claude・ChatGPTなど<strong>実際に使っているツールと具体的なユースケース</strong>を話してもらう。「これだけで月〇時間削減」など数字が出ると刺さる。一般視聴者（D層）にも届くテーマ。</dd>
+        <dt>撮れ高</dt><dd>実際の画面を見せながら話すと視覚的にわかりやすい。「使う前・使った後」の変化を対比させる。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s1">
+      <div class="ep-head">
+        <span class="ep-no">01-05</span>
+        <span class="ep-title">月商1000万のクリニックと3000万の違い</span>
+        <span class="ep-tag tag-target">A / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「規模が倍になる院長って、何が違うんですか？」</dd>
+        <dt>内容</dt><dd>数字の差ではなく<strong>「思考・行動・習慣」の違い</strong>を語ってもらう。「自分はどっちか」と視聴者が考えるフックを作る。</dd>
+        <dt>撮れ高</dt><dd>「伸びる院長がやっていること3つ」形式で整理するとテロップ映えする。</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── 3 時事ニュース ── -->
+  <section id="s3">
+    <h2>② 時事ニュース解説（5本）</h2>
+    <p class="section-sub">世の中のニュースを「クリニック経営に何が変わるか」に翻訳する解説型。</p>
+
+    <div class="ep s2" style="border-left-color:#1a6091">
+      <div class="ep-head" style="background:var(--ai)">
+        <span class="ep-no">02-01</span>
+        <span class="ep-title">ChatGPT・Claude、クリニック経営にどう使う？</span>
+        <span class="ep-tag tag-ai">✦ AI</span>
+        <span class="ep-tag tag-target">A / B / D</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「院長先生、AIって実際使えてますか？」</dd>
+        <dt>内容</dt><dd><strong>問診票・カルテ要約・SNS投稿・スタッフ教育</strong>での活用法を解説。「今すぐできる1つのこと」で締めると行動喚起になる。</dd>
+        <dt>撮れ高</dt><dd>実際の入力→出力画面を見せながら解説すると具体性が出る。「使ってない院長が損してること」という切り口も有効。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s2" style="border-left-color:#1a6091">
+      <div class="ep-head" style="background:var(--ai)">
+        <span class="ep-no">02-02</span>
+        <span class="ep-title">AI問診が普及したらクリニック経営はどう変わる</span>
+        <span class="ep-tag tag-ai">✦ AI</span>
+        <span class="ep-tag tag-target">A / B</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「AI問診導入のクリニック、もう増えてますよね？」</dd>
+        <dt>内容</dt><dd>導入した院長・していない院長の差を解説。<strong>「先行者メリットを今取るか、後で追いかけるか」</strong>という構図にすると経営判断の話になる。</dd>
+        <dt>撮れ高</dt><dd>具体的なAI問診ツール名を出せるとリアリティが増す。「導入コストvs削減できる工数」を数字で示すと保存率UP。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s2">
+      <div class="ep-head">
+        <span class="ep-no">02-03</span>
+        <span class="ep-title">診療報酬改定、今回の本当のインパクト</span>
+        <span class="ep-tag tag-target">A</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「改定されましたけど、ぶっちゃけどのくらい影響ありますか？」</dd>
+        <dt>内容</dt><dd>数字の変化より<strong>「経営行動として何を変えるべきか」</strong>に翻訳。「対応できていないクリニックがやりがちなミス」を入れると保存率UP。</dd>
+        <dt>撮れ高</dt><dd>タイムリー性が命。改定直後に撮影・投稿できると再生数が伸びやすい。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s2">
+      <div class="ep-head">
+        <span class="ep-no">02-04</span>
+        <span class="ep-title">SNS炎上したクリニック、何がまずかったのか</span>
+        <span class="ep-tag tag-target">A / B / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「最近また炎上してましたよね、あれ何がダメだったんですか？」</dd>
+        <dt>内容</dt><dd>事例ベースで<strong>「やってはいけない表現・対応」</strong>を解説。特定はせず一般化。自院の運用ルール見直しのきっかけになる内容。</dd>
+        <dt>撮れ高</dt><dd>「やりがちなNG表現TOP3」形式にすると切り抜きにもなる。炎上事例の直後に投稿するとタイムリー。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s2">
+      <div class="ep-head">
+        <span class="ep-no">02-05</span>
+        <span class="ep-title">美容クリニック増加で競争激化、生き残る条件</span>
+        <span class="ep-tag tag-target">A / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「クリニック数が増え続けてますけど、これどう見てますか？」</dd>
+        <dt>内容</dt><dd>市場飽和の現状と<strong>「指名想起を取れるクリニック」の条件</strong>を語る。「価格競争に入った瞬間に負け」という岩館さんの持論を引き出す。</dd>
+        <dt>撮れ高</dt><dd>「生き残るクリニックの共通点3つ」で整理すると視聴完了率が上がる。</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── 4 あるある ── -->
+  <section id="s4">
+    <h2>③ 経営あるある（6本）</h2>
+    <p class="section-sub">「言いづらいけどみんな抱えてる問題」を言語化。共感→笑い→学びの流れ。</p>
+
+    <div class="ep s3">
+      <div class="ep-head">
+        <span class="ep-no">03-01</span>
+        <span class="ep-title">伸びないクリニックの院長が言う3フレーズ</span>
+        <span class="ep-tag tag-target">A / B / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「あ〜これ言ってる院長やばいな…ってやつあります？」</dd>
+        <dt>内容</dt><dd><strong>「うちは口コミで来る」「SNSは若い子がやること」「いい医療をすれば広まる」</strong>などを岩館さん目線でリアルに解説。視聴者の自己診断を促す。</dd>
+        <dt>撮れ高</dt><dd>3フレーズを順番に出していくテロップ構成が映える。「言いたいけど言えなかった本音」を出してもらうと視聴者の共感を得やすい。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s3">
+      <div class="ep-head">
+        <span class="ep-no">03-02</span>
+        <span class="ep-title">Google口コミ1件に3時間かけた院長の話</span>
+        <span class="ep-tag tag-target">A / B</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「口コミ対応、やりすぎてる院長っていますよね？」</dd>
+        <dt>内容</dt><dd><strong>「時間対効果が最悪な行動TOP3」</strong>に口コミ返信を入れて共感→学びの流れを作る。「正しい口コミ対応の時間配分」まで話せると実用的。</dd>
+        <dt>撮れ高</dt><dd>岩館さんが実際に見た事例を話してもらうとリアリティが増す。「深夜に口コミ見てる院長の話」は多くの院長が共感する。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s3">
+      <div class="ep-head">
+        <span class="ep-no">03-03</span>
+        <span class="ep-title">「集患に困ってる」と言いながら広告費ゼロの院長</span>
+        <span class="ep-tag tag-target">A / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「集患の悩み相談で、一番多いパターンって何ですか？」</dd>
+        <dt>内容</dt><dd><strong>「広告は怖い」「口コミだけで来るはず」</strong>という思い込みを数字で解体。投資対効果を具体的に示すと行動喚起になる。</dd>
+        <dt>撮れ高</dt><dd>「広告費0円 vs 月30万円の院長、1年後の差」のような対比構成にすると伝わりやすい。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s3">
+      <div class="ep-head">
+        <span class="ep-no">03-04</span>
+        <span class="ep-title">スタッフが突然辞める前に必ず起きる3つのこと</span>
+        <span class="ep-tag tag-target">A / B / C</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「退職の前兆って、実はわかりやすいんですよね」</dd>
+        <dt>内容</dt><dd><strong>「シフト希望が減る」「ランチを一人で食べ始める」</strong>など具体的なサイン。「気づいた時の正しい対処法」まで話せると完結する。</dd>
+        <dt>撮れ高</dt><dd>「退職2週間前の院長あるある」フォーマットにすると③あるあるらしさが出る。保存・共有されやすいテーマ。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s3">
+      <div class="ep-head">
+        <span class="ep-no">03-05</span>
+        <span class="ep-title">業者のDMで良さそうに見えるやつの見分け方</span>
+        <span class="ep-tag tag-target">A / B</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「院長宛てのDMって毎日来ますよね、どう見分けてます？」</dd>
+        <dt>内容</dt><dd><strong>「実績が感想文だけ」「成功事例しか書いてない」「返信したら即電話」</strong>など具体的な見分け方を列挙。岩館さんが実際に断った事例を交えるとリアル感UP。</dd>
+        <dt>撮れ高</dt><dd>実際に届いたDMを（特定できない形で）見せながら解説できると映える。</dd>
+      </dl>
+    </div>
+
+    <div class="ep s3" style="border-left-color:#1a6091">
+      <div class="ep-head" style="background:var(--ai)">
+        <span class="ep-no">03-06</span>
+        <span class="ep-title">AIに仕事を奪われる医師と、使いこなす医師の差</span>
+        <span class="ep-tag tag-ai">✦ AI</span>
+        <span class="ep-tag tag-target">A / B / C / D</span>
+      </div>
+      <dl class="ep-body">
+        <dt>フック</dt><dd>「AIが普及したら、医師の仕事ってどうなると思いますか？」</dd>
+        <dt>内容</dt><dd>AI代替されやすい業務 vs <strong>人にしかできない価値</strong>を整理。「使いこなす医師の共通点」を具体的に話してもらう。D層（一般視聴者）にも届くテーマで拡散に強い。</dd>
+        <dt>撮れ高</dt><dd>「AIに負ける医師の3つの特徴」「AIを武器にする医師がやっていること」の対比テロップが映える。</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── 5 優先度 ── -->
+  <section id="s5">
+    <h2>優先度・撮影順の目安</h2>
+    <p class="section-sub">岩館さんの確認後、採用企画から以下の順で撮影・台本作成に進む。</p>
+
+    <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0">
+      <thead>
+        <tr style="border-bottom:1.5px solid var(--ink)">
+          <th style="text-align:left;padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">優先度</th>
+          <th style="text-align:left;padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">企画No.</th>
+          <th style="text-align:left;padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">理由</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--rule-soft)"><td style="padding:10px 14px;font-weight:600;color:var(--accent)">★★★</td><td style="padding:10px 14px">01-04 / 02-01 / 03-06</td><td style="padding:10px 14px;color:var(--ink-2)">AIネタ。岩館さんが話したがっているテーマ。トレンド性が高く今が旬</td></tr>
+        <tr style="border-bottom:1px solid var(--rule-soft)"><td style="padding:10px 14px;font-weight:600;color:var(--ink-2)">★★☆</td><td style="padding:10px 14px">03-01 / 03-04 / 01-02</td><td style="padding:10px 14px;color:var(--ink-2)">あるある・本音系。保存・共有されやすく初速が出やすい</td></tr>
+        <tr style="border-bottom:1px solid var(--rule-soft)"><td style="padding:10px 14px;color:var(--ink-3)">★☆☆</td><td style="padding:10px 14px">01-01 / 01-03 / 02-05</td><td style="padding:10px 14px;color:var(--ink-2)">定番の経営コンテンツ。ストック性が高くチャンネルの土台になる</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note accent">
+      <span class="lbl">Next Step</span>
+      この提案書を岩館さんに共有 → 各企画に「採用 / 不採用 / 修正」をつけてもらう → 採用企画から台本作成へ。台本は別ドキュメントで企画ごとに作成します。
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>GS-PLAN-2026-01 ／ v1.0</div>
+    <div>CONFIDENTIAL ／ INTERNAL USE ONLY</div>
+  </footer>
+
+</article>
+</body>
+</html>
